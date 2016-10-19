@@ -49,14 +49,13 @@ export default class Example extends Component {
     super();
     this.state = {
       selectedTabs: {one:true,two:false,three:false,four:false},
-      currentTab: 'one'
     };
   };
 
   selectTab(tab){
     let tabs = this.state.selectedTabs;
     for (var i in tabs) {
-      ( i === tab ) ? tab[i] = true:tab[i] = false;
+      ( i === tab ) ? tabs[i] = true:tabs[i] = false
     };
     this.setState({selectedTabs:tabs});
   };
