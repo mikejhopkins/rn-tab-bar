@@ -1,0 +1,25 @@
+{
+  "name": "rn-tab-bar",
+  "version": "1.0.0",
+  "description": "react-native tab bar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkerdan/rn-tab-bar.git"
+  },
+  "keywords": [
+    "react-native",
+    "tab-bar",
+    "tab",
+    "tabs"
+  ],
+  "author": "Dan Parker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parkerdan/rn-tab-bar/issues"
+  },
+  "homepage": "https://github.com/parkerdan/rn-tab-bar#readme"
+}
