@@ -3,7 +3,7 @@
 ![Example One](./tabbar.gif "Tab Bar")
 
 
-React-Native tab bar, icon only, no words, like Facebook.
+React-Native tab bar, optional text with icons as well.
 
 Can use local icons or Font Awesome icons
 
@@ -19,6 +19,8 @@ containerHeight={ required Integer }
 iconHeight={ required Integer }
 selectedColor={ required String }
 unselectedColor={ required String }
+text={ optional String }
+textStyle={ optional Object of styles } // color of text is taken care of
 containerStyle={  optional styles for the container }
 tabs={ required Array of Objects }
 
