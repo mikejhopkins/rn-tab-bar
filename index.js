@@ -88,7 +88,11 @@ render(){
         <TouchableOpacity
           key={i}
           onPress={opt.onPress}
-          style={{
+          hitSlop={{
+            top:10,
+            bottom:20,
+            left:20,
+            right:20
           }}>
           {
             (opt.localIcon) ? this.renderImage(opt):this.renderIcon(opt)
