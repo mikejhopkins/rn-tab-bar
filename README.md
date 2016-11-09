@@ -14,7 +14,7 @@ Can use local icons or Font Awesome icons
 
 ### Props
 | Prop | Type | Description | Required |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | containerHeight | number | height of the tab bat container | **YES** |
 | iconHeight | number | height of the icons within the tab bar | **YES**
 | selectedColor | string | the color of the icon when it is selected | **YES** |
@@ -26,7 +26,7 @@ Can use local icons or Font Awesome icons
 
 #### Tab Structure
 | Key | Value | Description | Required |
-| --- | --- | --- |
+| --- | --- | --- | ---|
 | localIcon | boolean | render a local icon in lieu of FontAwesome icon | **YES** |
 | iconSource | string (FontAwesome Icon name) or require('../Folder/file.ext') | name of the FontAwesome Icon or the location of the local icon to render | **YES** |
 | isSelected | boolean | should this tab be colored as selected | **YES**|
