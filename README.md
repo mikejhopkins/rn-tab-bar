@@ -1,4 +1,4 @@
-### rn-tab-bar
+# rn-tab-bar
 
 ![Example One](./tabbar.gif "Tab Bar")
 
@@ -12,27 +12,26 @@ Can use local icons or Font Awesome icons
 `react-native link`
 
 
-##### Props
-```js
+### Props
+| Prop | Type | Description | Required |
+| --- | --- | --- |
+| containerHeight | number | height of the tab bat container | **YES** |
+| iconHeight | number | height of the icons within the tab bar | **YES**
+| selectedColor | string | the color of the icon when it is selected | **YES** |
+| unselectedColor | string | the color of the icon when it is not selected | **YES** |
+| tabs | array of objects  | the tabs to render SEE TAB STRUCTURE | **YES**
+| containerStyle | object | styles applied to the tab bar container | no |
 
-containerHeight={ required Integer }
-iconHeight={ required Integer }
-selectedColor={ required String }
-unselectedColor={ required String }
-text={ optional String }
-textStyle={ optional Object of styles } // color of text is taken care of
-containerStyle={  optional styles for the container }
-tabs={ required Array of Objects }
+##### Tab Structure
+| Key | Value | Description | Required |
+| --- | --- | --- |
+| localIcon | boolean | render a local icon in lieu of FontAwesome icon | **YES** |
+| iconSource | string (FontAwesome Icon name) or require('../Folder/file.ext') | name of the FontAwesome Icon or the location of the local icon to render | **YES** |
+| isSelected | boolean | should this tab be colored as selected | **YES**|
+| onPress | function | called when the tab is pressed, use this to update you component to respond to tab changes | **YES** |
+| text | string | optionally display text under the icon | no |
+| textStyle | object | optionally style the text | no |
 
-//    ** this is the tab structure **
-{
-  localIcon: bool  // true for locol icon in you file tree, false to use FontAwesome,
-  isSelected: bool,
-  onPress: function,
-  iconSource: either a String for a FontAwesome icon, or require ('file.extension') for a localIcon
-}
-
-```
 
 #### Example
 
