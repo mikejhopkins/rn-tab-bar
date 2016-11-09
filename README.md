@@ -22,7 +22,9 @@ Can use local icons or Font Awesome icons
 | tabs | array of objects  | the tabs to render SEE TAB STRUCTURE | **YES**
 | containerStyle | object | styles applied to the tab bar container | no |
 
-##### Tab Structure
+<br>
+
+#### Tab Structure
 | Key | Value | Description | Required |
 | --- | --- | --- |
 | localIcon | boolean | render a local icon in lieu of FontAwesome icon | **YES** |
@@ -32,6 +34,7 @@ Can use local icons or Font Awesome icons
 | text | string | optionally display text under the icon | no |
 | textStyle | object | optionally style the text | no |
 
+<br>
 
 #### Example
 
