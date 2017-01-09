@@ -1,6 +1,6 @@
 'use strict'
 
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import {
 View,
 Text,
@@ -9,17 +9,6 @@ Image
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-const propTypes = {
-tabs: React.PropTypes.array.isRequired,
-containerHeight: React.PropTypes.number.isRequired,
-iconHeight: React.PropTypes.number.isRequired,
-selectedColor: React.PropTypes.string.isRequired,
-unselectedColor: React.PropTypes.string.isRequired,
-containerStyle: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.number]),
-textStyle: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.number]),
-text: React.PropTypes.string,
-};
 
 //  ****   THIS IS THE OBJECT STRUCTURE FOR THE TABS ARRAY  ****
 // {
@@ -31,7 +20,18 @@ text: React.PropTypes.string,
 //   iconSource: string for FontAwesome icons,  require('file.extension') for local icon,
 // }
 
-export default class TabBar extends Component {
+export default class TabBar extends React.Component {
+
+  static propTypes = {
+    tabs: React.PropTypes.array.isRequired,
+    containerHeight: React.PropTypes.number.isRequired,
+    iconHeight: React.PropTypes.number.isRequired,
+    selectedColor: React.PropTypes.string.isRequired,
+    unselectedColor: React.PropTypes.string.isRequired,
+    containerStyle: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.number]),
+    textStyle: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.number]),
+    text: React.PropTypes.string,
+  }
 
 renderIcon(opt){
   return(
@@ -64,11 +64,12 @@ renderImage(opt){
 renderText(opt){
   if (opt.text) {
     return(
-      <Text style={[{
-        color: (opt.isSelected) ? this.props.selectedColor:this.props.unselectedColor,
-      },
-        opt.textStyle
-      ]}>
+      <Text
+        style={[{
+          color: (opt.isSelected) ? this.props.selectedColor:this.props.unselectedColor,
+        },
+          opt.textStyle
+        ]}>
         {opt.text}
       </Text>
     )
@@ -78,28 +79,20 @@ renderText(opt){
 render(){
   let tabs = this.props.tabs.map((opt,i) => {
     return(
-      <View
-        key={i} style={{
+      <TouchableOpacity
+        key={i}
+        onPress={opt.onPress}
+        style={{
           flex:1,
           flexDirection: 'column',
           justifyContent:'center',
           alignItems:'center',
         }}>
-        <TouchableOpacity
-          key={i}
-          onPress={opt.onPress}
-          hitSlop={{
-            top:10,
-            bottom:20,
-            left:20,
-            right:20
-          }}>
-          {
-            (opt.localIcon) ? this.renderImage(opt):this.renderIcon(opt)
-          }
-        </TouchableOpacity>
+        {
+          (opt.localIcon) ? this.renderImage(opt):this.renderIcon(opt)
+        }
         { this.renderText(opt)}
-      </View>
+      </TouchableOpacity>
     )
   });
   return(
@@ -113,5 +106,3 @@ render(){
 };
 
 };
-
-TabBar.propTypes = propTypes;
