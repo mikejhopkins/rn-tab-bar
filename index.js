@@ -13,63 +13,36 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 //  ****   THIS IS THE OBJECT STRUCTURE FOR THE TABS ARRAY  ****
 // {
 //   localIcon: bool,
-//   isSelected: bool,
-//   onPress: function,
-//   text: string,
-//   textStyle: {fontSize:12}  // color of text is changed with image
-//   iconSource: string for FontAwesome icons,  require('file.extension') for local icon,
+//   onPress: function.required,
+//   iconProps: React.PropTypes.object,
+//   textProps: React.PropTypes.object,
+//   tabStyle: React.PropTypes.object,
+//   text: React.PropTypes.string,
 // }
 
 export default class TabBar extends React.Component {
 
   static propTypes = {
     tabs: React.PropTypes.array.isRequired,
-    containerHeight: React.PropTypes.number.isRequired,
-    iconHeight: React.PropTypes.number.isRequired,
-    selectedColor: React.PropTypes.string.isRequired,
-    unselectedColor: React.PropTypes.string.isRequired,
-    containerStyle: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.number]),
-    textStyle: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.number]),
-    text: React.PropTypes.string,
+    containerStyle: React.PropTypes.any.isRequired,
   }
 
 renderIcon(opt){
   return(
-    <Icon
-      size={this.props.iconHeight}
-      name={opt.iconSource}
-      color={(opt.isSelected) ? this.props.selectedColor:this.props.unselectedColor}
-    />
+    <Icon {...opt.iconProps} />
   )
 };
 
 renderImage(opt){
   return(
-    <View style={{
-      alignItems:'center',
-      justifyContent:'center'
-    }}>
-      <Image
-        source={opt.iconSource}
-        style={{
-          height:this.props.iconHeight,
-          tintColor: (opt.isSelected) ? this.props.selectedColor:this.props.unselectedColor,
-        }}
-        resizeMode={'contain'}
-      />
-    </View>
+      <Image {...opt.iconProps} />
   )
 };
 
 renderText(opt){
   if (opt.text) {
     return(
-      <Text
-        style={[{
-          color: (opt.isSelected) ? this.props.selectedColor:this.props.unselectedColor,
-        },
-          opt.textStyle
-        ]}>
+      <Text {...opt.textProps} >
         {opt.text}
       </Text>
     )
@@ -82,12 +55,12 @@ render(){
       <TouchableOpacity
         key={i}
         onPress={opt.onPress}
-        style={{
+        style={[{
           flex:1,
           flexDirection: 'column',
           justifyContent:'center',
           alignItems:'center',
-        }}>
+        },opt.tabStyle]}>
         {
           (opt.localIcon) ? this.renderImage(opt):this.renderIcon(opt)
         }
@@ -97,7 +70,6 @@ render(){
   });
   return(
     <View style={[{
-      height: this.props.containerHeight,
       flexDirection:'row',
     },this.props.containerStyle]}>
       { tabs }

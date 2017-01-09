@@ -15,12 +15,8 @@ Can use local icons or Font Awesome icons
 ### Props
 | Prop | Type | Description | Required |
 | --- | --- | --- | --- |
-| containerHeight | number | height of the tab bat container | **YES** |
-| iconHeight | number | height of the icons within the tab bar | **YES**
-| selectedColor | string | the color of the icon when it is selected | **YES** |
-| unselectedColor | string | the color of the icon when it is not selected | **YES** |
 | tabs | array of objects  | the tabs to render SEE TAB STRUCTURE | **YES**
-| containerStyle | object | styles applied to the tab bar container | no |
+| containerStyle | object | styles applied to the tab bar container | **YES** |
 
 <br>
 
@@ -28,11 +24,11 @@ Can use local icons or Font Awesome icons
 | Key | Value | Description | Required |
 | --- | --- | --- | ---|
 | localIcon | boolean | render a local icon in lieu of FontAwesome icon | **YES** |
-| iconSource | string (FontAwesome Icon name) or require('../Folder/file.ext') | name of the FontAwesome Icon or the location of the local icon to render | **YES** |
-| isSelected | boolean | should this tab be colored as selected | **YES**|
+| iconProps | icon or image props | transfers props to an Image or FontAwesome Icon depending on the above | **YES** |
 | onPress | function | called when the tab is pressed, use this to update you component to respond to tab changes | **YES** |
 | text | string | optionally display text under the icon | no |
-| textStyle | object | optionally style the text | no |
+| textProps | object | optionally style the text | no |
+| tabStyle | object | optionally add styles to the individual tabs |
 
 <br>
 
@@ -40,14 +36,14 @@ Can use local icons or Font Awesome icons
 
 ```js
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View,
 } from 'react-native'
 
 import TabBar from 'rn-tab-bar';
 
-export default class Example extends Component {
+export default class Example extends React.Component {
   constructor(){
     this.selectTab = this.selectTab.bind(this);
     super();
@@ -70,36 +66,45 @@ export default class Example extends Component {
       <View style={{flex:1}}>
         <View style={{flex:1}} />
         <TabBar
-          containerHeight={50}
           containerStyle={{
             borderTopWidth: 1,
+            height:50
           }}
-          iconHeight={30}
-          selectedColor={'blue'}
-          unselectedColor={'gray'}
           tabs={[
             {
               localIcon:false,
-              iconSource: 'bicycle',
-              isSelected: this.state.selectedTabs.one,
+              iconProps:{
+                name: 'bicycle',
+                size: 30,
+                color: this.state.selectedTabs.one ? 'blue':'gray'
+              },
               onPress: () => this.selectTab('one')
             },
             {
               localIcon: false,
-              iconSource: 'cogs',
-              isSelected: this.state.selectedTabs.two,
+              iconProps:{
+                name: 'cogs',
+                size: 30,
+                color: this.state.selectedTabs.two ? 'blue':'gray'
+              },
               onPress: () => this.selectTab('two')
             },
             {
               localIcon:false,
-              iconSource: 'users',
-              isSelected: this.state.selectedTabs.three,
+              iconProps:{
+                name: 'users',
+                size: 30,
+                color: this.state.selectedTabs.three ? 'blue':'gray'
+              },
               onPress: () => this.selectTab('three')
             },
             {
               localIcon: false,
-              iconSource: 'bars',
-              isSelected: this.state.selectedTabs.four,
+              iconProps:{
+                name: 'bars',
+                size: 30,
+                color: this.state.selectedTabs.four ? 'blue':'gray'
+              },
               onPress: () => this.selectTab('four')
             },
           ]}
