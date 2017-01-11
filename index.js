@@ -5,7 +5,8 @@ import {
 View,
 Text,
 TouchableOpacity,
-Image
+Image,
+StyleSheet
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -18,6 +19,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 //   textProps: React.PropTypes.object,
 //   tabStyle: React.PropTypes.object,
 //   text: React.PropTypes.string,
+//   badge: null or string,
+//   badgeTextStyle: TextProps
 // }
 
 export default class TabBar extends React.Component {
@@ -49,6 +52,23 @@ renderText(opt){
   }
 };
 
+renderBadge(opt){
+  if (opt.badge) {
+    return(
+      <View style={{
+        backgroundColor:'#FF3B30',
+        padding:3,
+        borderRadius:10,
+        position:'absolute',
+        top: 4,
+        right:4
+      }}>
+        <Text {...opt.badgeTextProps}>{opt.badge}</Text>
+      </View>
+    )
+  }
+}
+
 render(){
   let tabs = this.props.tabs.map((opt,i) => {
     return(
@@ -65,6 +85,7 @@ render(){
           (opt.localIcon) ? this.renderImage(opt):this.renderIcon(opt)
         }
         { this.renderText(opt)}
+        { this.renderBadge(opt) }
       </TouchableOpacity>
     )
   });

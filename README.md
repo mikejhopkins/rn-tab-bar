@@ -27,8 +27,10 @@ Can use local icons or Font Awesome icons
 | iconProps | icon or image props | transfers props to an Image or FontAwesome Icon depending on the above | **YES** |
 | onPress | function | called when the tab is pressed, use this to update you component to respond to tab changes | **YES** |
 | text | string | optionally display text under the icon | no |
-| textProps | object | optionally style the text | no |
+| textProps | Text props | any valid Text props | no |
 | tabStyle | object | optionally add styles to the individual tabs |
+| badge | string or null | add a badge to the tabs| no |
+| badgeTextProps | Text props | any valid Text props | no |
 
 <br>
 
