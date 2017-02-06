@@ -1,4 +1,8 @@
-# rn-tab-bar
+# No Need to ever use this now with the new React-Navigation API
+
+View Read-Me raw for docs
+
+<!-- # rn-tab-bar
 
 ![Example One](./tabbar.gif "Tab Bar")
 
@@ -121,4 +125,4 @@ export default class Example extends React.Component {
 
 
 
-```
+``` -->
