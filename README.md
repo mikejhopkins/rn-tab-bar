@@ -2,6 +2,8 @@
 
 View Read-Me raw for docs
 
+Temp fork to complete project, prior to porting to React-Navigation API
+
 <!-- # rn-tab-bar
 
 ![Example One](./tabbar.gif "Tab Bar")
